@@ -3,15 +3,28 @@ server:
 
 ##userPoolId: ${userPoolId}
 ##awsregion: us-east-1
-
+    
 spring:
+
+  aop:
+    proxy-target-class: false
+    
   jpa:
     properties:
       hibernate:
+        #dialect: org.hibernate.dialect.MySQLDialect        
+        ##dialect: org.hibernate.dialect.MySQL5InnoDBDialect       
         dialect: org.hibernate.dialect.MySQL5Dialect
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        naming_strategy:  org.hibernate.cfg.DefaultNamingStrategy        
+        show_sql: true
+        format_sql: true          
+        packagesToScan: pe.jaav.sistemas.miniencuesta    
+                
     hibernate:
       ddl-auto: none
-  datasource:
+  datasource:    
+    driverClassName: com.mysql.jdbc.Driver    
     url: jdbc:mysql://${host}:${port}/${database}?useUnicode=true&characterEncoding=utf8&useSSL=false&requireSSL=false
     username: ${username}
     password: ${password}

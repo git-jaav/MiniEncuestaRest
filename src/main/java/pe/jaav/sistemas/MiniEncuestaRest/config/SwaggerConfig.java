@@ -19,12 +19,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-public class DocketConfig extends Docket{
+public class SwaggerConfig extends Docket{
 
 	//@Autowired DocketConfigProperties docketConfigProperties;
 		
 	//@Value("${swagger.info.title}")
-	private String title = "Spring Boot REST API";
+	private String title = "SPRING BOOT REST API";
 
 	//@Value("${swagger.info.description}")
 	private String description = "Spring Boot REST API - Mini Encusta";
@@ -34,7 +34,7 @@ public class DocketConfig extends Docket{
 	/**
 	 *  Constructor por defecto.... inicializara con la app
 	 */
-	public DocketConfig() {
+	public SwaggerConfig() {
 		super(DocumentationType.SWAGGER_2);		
 		this
 	       .select()       	    	       
