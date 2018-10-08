@@ -1,16 +1,9 @@
 package pe.jaav.sistemas.miniencuesta.model.dao.impl;
  
 import java.util.List;
-import java.util.Optional;
 
 import org.hibernate.Criteria;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import pe.jaav.sistemas.miniencuesta.model.dao.MeEncuestaTemaDao;
@@ -18,7 +11,7 @@ import pe.jaav.sistemas.miniencuesta.model.domain.MeEncuestaTema;
 import pe.jaav.sistemas.miniencuesta.utiles.UtilesCommons;
  
 @Repository
-public class MeEncuestaTemaDaoImpl extends AbstractDaoImpl<MeEncuestaTema, Integer> implements MeEncuestaTemaDao {
+public class MeEncuestaTemaDaoImpl extends AbstractDaoImpl<MeEncuestaTema, String> implements MeEncuestaTemaDao {
 	
 	protected  MeEncuestaTemaDaoImpl() {
 		super(MeEncuestaTema.class);

@@ -6,7 +6,7 @@ import pe.jaav.sistemas.miniencuesta.model.domain.MeEncuestaTema;
 
 public interface MeEncuestaTemaService {
 
-	public MeEncuestaTema obtenerPorId(Integer id);	
+	public MeEncuestaTema obtenerPorId(String id);	
 	public int contarListado(MeEncuestaTema objDao);
 	public List<MeEncuestaTema> listar(MeEncuestaTema objDao,boolean paginable);
 	

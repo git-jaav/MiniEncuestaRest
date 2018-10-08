@@ -2,6 +2,7 @@ package pe.jaav.sistemas.MiniEncuestaRest.config;
 
 import java.util.Collections;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -29,7 +30,16 @@ public class SwaggerConfig extends Docket{
 	//@Value("${swagger.info.description}")
 	private String description = "Spring Boot REST API - Mini Encusta";
 	
-	
+
+    @Bean
+    public Docket api() { 
+        return new Docket(DocumentationType.SWAGGER_2)  
+          .select()                                  
+          .apis(RequestHandlerSelectors.basePackage("pe.jaav.sistemas.spring.controller.api"))              
+          .paths(PathSelectors.any())                          
+          .build()
+          .apiInfo(metaData());
+    }	
 	
 	/**
 	 *  Constructor por defecto.... inicializara con la app

@@ -34,7 +34,6 @@
 	</properties>
 
 	<dependencies>
-	
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -49,8 +48,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -90,7 +87,20 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 		</dependency>
-						
+					
+		<!-- Dozer para mapeo y convertidor de Entidades -->
+		<dependency>
+		    <groupId>net.sf.dozer</groupId>
+		    <artifactId>dozer</artifactId>
+		    <version>${dozer.version}</version>
+		</dependency>
+								
+		<dependency>
+			<groupId>pe.jaav.sistemas</groupId>
+			<artifactId>JAcomponentSecurityAWS</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+										
 	</dependencies>
 
 	<build>

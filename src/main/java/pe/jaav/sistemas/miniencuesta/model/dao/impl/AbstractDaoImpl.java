@@ -3,7 +3,6 @@ package pe.jaav.sistemas.miniencuesta.model.dao.impl;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.CriteriaQuery;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,27 +39,29 @@ public abstract class AbstractDaoImpl<E, I extends Serializable>  implements Abs
 	        return sf;
 	    }
 
-	    @SuppressWarnings("unchecked")
+	    //@SuppressWarnings("unchecked")
 	    //@Override
 	    public E findById(I id) {
 	        return (E) getCurrentSession().get(entityClass, id);
 	    }
-
+	    
+	    @Override
 	    public void saveOrUpdate(E e) {
 	        getCurrentSession().saveOrUpdate(e);	        
 	    }
 	    
+	    @Override
 	    public void update(E e) {    	
 	        getCurrentSession().update(e);	        
 	    }
 
-	    //@Override
+	    @Override
 	    public void save(E e) {    	
 	        getCurrentSession().save(e);	        
 	    }
 
 	    
-	    //@Override
+	    @Override
 	    public void delete(E e) {
 	        getCurrentSession().delete(e);	        
 	    }

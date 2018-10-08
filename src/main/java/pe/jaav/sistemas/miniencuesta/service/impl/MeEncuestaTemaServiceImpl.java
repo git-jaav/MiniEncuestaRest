@@ -18,7 +18,7 @@ public class MeEncuestaTemaServiceImpl implements MeEncuestaTemaService {
 	MeEncuestaTemaDao meEncuestaTemaDao;
 	
 	@Override
-	public MeEncuestaTema obtenerPorId(Integer id) {		
+	public MeEncuestaTema obtenerPorId(String id) {		
 		return meEncuestaTemaDao.findById(id);
 	}
 
@@ -33,21 +33,21 @@ public class MeEncuestaTemaServiceImpl implements MeEncuestaTemaService {
 	}
 
 	@Override
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = false)
 	public int guardar(MeEncuestaTema objDao) {
 		meEncuestaTemaDao.save(objDao);
-		return objDao.getEnteId();
+		return 1;
 	}
 
 	@Override
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = false)
 	public int actualizar(MeEncuestaTema objDao) {
 		meEncuestaTemaDao.update(objDao);
-		return objDao.getEnteId();
+		return 1;
 	}
 
 	@Override
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = false)
 	public int eliminar(MeEncuestaTema objDao) {
 		meEncuestaTemaDao.delete(objDao);
 		return 1;

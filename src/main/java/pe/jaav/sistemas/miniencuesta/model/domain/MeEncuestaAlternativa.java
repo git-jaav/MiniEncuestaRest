@@ -8,7 +8,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="me_encuesta_alternativa")
-@NamedQuery(name="MeEncuestaAlternativa.findAll", query="SELECT m FROM MeEncuestaAlternativa m")
 public class MeEncuestaAlternativa extends EntidadSup {
 	
 	/**
@@ -19,7 +18,7 @@ public class MeEncuestaAlternativa extends EntidadSup {
 	private String enaltEstado;
 	private String enaltOpcion;
 	
-	private Integer enteId;
+	private String enteCodigo;
 	
 	private MeEncuestaTema meEncuestaTema;	
 
@@ -58,20 +57,20 @@ public class MeEncuestaAlternativa extends EntidadSup {
 	}
 
 
-	@Column(name="ente_id")
-	public Integer getEnteId() {
-		return enteId;
+	@Column(name="ente_codigo")
+	public String getEnteCodigo() {
+		return enteCodigo;
 	}
 
 
-	public void setEnteId(Integer enteId) {
-		this.enteId = enteId;
+	public void setEnteCodigo(String enteCodigo) {
+		this.enteCodigo = enteCodigo;
 	}
 
 
 	//bi-directional many-to-one association to MeEncuestaTema
 	@ManyToOne
-	@JoinColumn(name="ente_id", insertable = false, updatable = false)
+	@JoinColumn(name="ente_codigo", insertable = false, updatable = false)
 	public MeEncuestaTema getMeEncuestaTema() {
 		return this.meEncuestaTema;
 	}

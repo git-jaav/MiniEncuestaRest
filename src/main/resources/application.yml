@@ -1,13 +1,22 @@
-server:
-  port: 8080
+###################### GENERAL ####################
+###################################################
 
 ##userPoolId: ${userPoolId}
 ##awsregion: us-east-1
     
-spring:
-
+spring:  
+  profiles:
+    active: dev          
   aop:
     proxy-target-class: false
+
+
+####PROFILE DEV
+---
+spring:
+  profiles: dev
+  application:
+    name: mini_encuesta
     
   jpa:
     properties:
@@ -33,3 +42,6 @@ spring:
       enabled: true
     restart:
       enabled: true
+      
+server:
+  port: ${vcap.application.port:8081}      

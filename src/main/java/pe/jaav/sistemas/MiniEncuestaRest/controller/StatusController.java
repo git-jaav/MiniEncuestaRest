@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import pe.jaav.sistemas.miniencuesta.utiles.Constant;
+
 
 @RestController
 @CrossOrigin
@@ -15,6 +17,6 @@ public class StatusController {
 
 	@GetMapping(value="verificar")
 	public ResponseEntity<String> verificarToken(){
-		return new ResponseEntity<String>("OK", HttpStatus.OK);
+		return new ResponseEntity<String>(Constant.RESULT_OK, HttpStatus.OK);
 	}
 }
