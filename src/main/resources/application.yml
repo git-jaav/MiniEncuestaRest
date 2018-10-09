@@ -1,8 +1,9 @@
 ###################### GENERAL ####################
 ###################################################
 
-##userPoolId: ${userPoolId}
-##awsregion: us-east-1
+userPoolId: ${userPoolId}
+awsregion: us-east-1
+enableSecurity: N
     
 spring:  
   profiles:
