@@ -3,7 +3,7 @@
 
 userPoolId: ${userPoolId}
 awsregion: us-east-1
-enableSecurity: N
+enableSecurity: S
     
 spring:  
   profiles:
