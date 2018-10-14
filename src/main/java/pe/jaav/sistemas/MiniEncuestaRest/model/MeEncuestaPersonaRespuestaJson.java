@@ -2,7 +2,7 @@ package pe.jaav.sistemas.MiniEncuestaRest.model;
 
 import java.util.Date;
 
-public class MeEncuestaPersonaRespuestaJson {
+public class MeEncuestaPersonaRespuestaJson  extends EntidadJson {
 
 	private Long enperEncuestaPersonaId;
 	private String enperApellidoMaterno;

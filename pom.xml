@@ -84,8 +84,7 @@
 		<!-- MySQL Java Connector dependency -->
 		<dependency>
 			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.version}</version>
+			<artifactId>mysql-connector-java</artifactId>			
 		</dependency>
 					
 		<!-- Dozer para mapeo y convertidor de Entidades -->

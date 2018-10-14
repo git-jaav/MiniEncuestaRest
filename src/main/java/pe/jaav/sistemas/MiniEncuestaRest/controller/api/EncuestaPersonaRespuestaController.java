@@ -23,6 +23,7 @@ import pe.jaav.sistemas.MiniEncuestaRest.util.JsonViewAssembler;
 import pe.jaav.sistemas.miniencuesta.model.domain.MeEncuestaAlternativa;
 import pe.jaav.sistemas.miniencuesta.model.domain.MeEncuestaPersonaRespuesta;
 import pe.jaav.sistemas.miniencuesta.service.MeEncuestaPersonaRespuestaService;
+import pe.jaav.sistemas.miniencuesta.utiles.UtilesCommons;
 
 @RestController
 @CrossOrigin
@@ -82,6 +83,32 @@ public class EncuestaPersonaRespuestaController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	@GetMapping(value="listar/pag/{iniPag}/{sizePag}/{enteCodigo}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<MeEncuestaPersonaRespuestaJson>> listarTemaCodigo(
+			@PathVariable String enteCodigo,
+			@PathVariable Integer iniPag,
+			@PathVariable Integer sizePag){
+		try {
+			MeEncuestaPersonaRespuesta filtro = new MeEncuestaPersonaRespuesta();
+			MeEncuestaAlternativa altFiltro = new MeEncuestaAlternativa();			
+			altFiltro.setEnteCodigo(enteCodigo);
+			filtro.setMeEncuestaAlternativa(altFiltro);						
+			
+			filtro.setInicio(iniPag);
+			filtro.setNumeroFilas(sizePag);
+			List<MeEncuestaPersonaRespuesta> lista = meEncuestaAlternativaService.listar(filtro, true);
+			
+			if(UtilesCommons.noEsVacio(lista)){
+				int cuentaTotal = meEncuestaAlternativaService.contarListado(filtro);
+				lista.stream().forEach(c -> {c.setContadorTotal(cuentaTotal);});
+			}
+			return new ResponseEntity<List<MeEncuestaPersonaRespuestaJson>>(jsonAssemb.getJsonList(lista), HttpStatus.OK);
+		}catch(Exception e) {
+			logger.error("Error: ",e);
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}	
 		
 	@PostMapping(value="guardar", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<MeEncuestaPersonaRespuestaJson> guardar(

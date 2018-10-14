@@ -2,6 +2,7 @@ package pe.jaav.sistemas.miniencuesta.model.dao.impl;
  
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +23,7 @@ public class MeEncuestaPersonaRespuestaDaoImpl extends AbstractDaoImpl<MeEncuest
  
 	public int contarListado(MeEncuestaPersonaRespuesta objDao) {
 		Criteria criteria = getCriteriaFilter(objDao);
+		criteria.setProjection(Projections.rowCount());
 		String obj = criteria.uniqueResult() != null ? criteria.uniqueResult().toString() : "0";
 		return Integer.parseInt(obj);
 	}
