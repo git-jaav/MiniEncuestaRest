@@ -36,6 +36,7 @@ public class MeEncuestaPersonaRespuesta extends EntidadSup {
 
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="enper_encuesta_persona_id")
 	public Long getEnperEncuestaPersonaId() {
 		return this.enperEncuestaPersonaId;

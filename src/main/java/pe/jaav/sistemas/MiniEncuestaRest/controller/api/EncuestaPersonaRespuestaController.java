@@ -23,6 +23,7 @@ import pe.jaav.sistemas.MiniEncuestaRest.util.JsonViewAssembler;
 import pe.jaav.sistemas.miniencuesta.model.domain.MeEncuestaAlternativa;
 import pe.jaav.sistemas.miniencuesta.model.domain.MeEncuestaPersonaRespuesta;
 import pe.jaav.sistemas.miniencuesta.service.MeEncuestaPersonaRespuestaService;
+import pe.jaav.sistemas.miniencuesta.utiles.Constant;
 import pe.jaav.sistemas.miniencuesta.utiles.UtilesCommons;
 
 @RestController
@@ -110,6 +111,32 @@ public class EncuestaPersonaRespuestaController {
 		}
 	}	
 		
+	
+	@GetMapping(value="cod_usuario/{codUsuario}/{enteCodigo}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<MeEncuestaPersonaRespuestaJson> obtenerPorCodigoUsuario(
+			@PathVariable String codUsuario , @PathVariable String enteCodigo
+			){
+		try {
+			MeEncuestaPersonaRespuesta objResult = null;
+			/***/
+			MeEncuestaPersonaRespuesta filtro = new MeEncuestaPersonaRespuesta();
+			MeEncuestaAlternativa altFiltro = new MeEncuestaAlternativa();			
+			altFiltro.setEnteCodigo(enteCodigo);
+			filtro.setMeEncuestaAlternativa(altFiltro);						
+			filtro.setEnperCodigoUsuario(codUsuario);
+			filtro.setEnperEstado(Constant.ACTIVO_db);			
+			List<MeEncuestaPersonaRespuesta> listaResult =   meEncuestaAlternativaService.listar(filtro, false);
+			if(UtilesCommons.noEsVacio(listaResult)){
+				/**Si la data es COrrecta SOLO DEBERIA haber UN SOLO REGISTRO con estos FITROS.. si no el primero*/
+				objResult = listaResult.get(0);
+			}
+			return new ResponseEntity<MeEncuestaPersonaRespuestaJson>(jsonAssemb.getJsonObject(objResult), HttpStatus.OK);
+		}catch(Exception e) {
+			logger.error("Error: ",e);
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	@PostMapping(value="guardar", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<MeEncuestaPersonaRespuestaJson> guardar(
 			@RequestBody MeEncuestaPersonaRespuestaJson objJson){

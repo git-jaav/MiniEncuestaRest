@@ -30,6 +30,8 @@ spring:
         show_sql: true
         format_sql: true          
         packagesToScan: pe.jaav.sistemas.miniencuesta    
+        id:
+          new_generator_mappings: false
                 
     hibernate:
       ddl-auto: none

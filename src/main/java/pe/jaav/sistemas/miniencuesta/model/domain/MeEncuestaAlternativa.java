@@ -27,6 +27,7 @@ public class MeEncuestaAlternativa extends EntidadSup {
 
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="enalt_id")
 	public Integer getEnaltId() {
 		return this.enaltId;
