@@ -20,7 +20,7 @@
 	</parent>
 
 	<properties>
-		<start-class>pe.jaav.sistemas.pe.jaav.sistemas.MiniEncuestaRest.MiniEcuestaRestApplication</start-class>
+		<start-class>pe.jaav.sistemas.MiniEncuestaRest.MiniEcuestaRestApplication</start-class>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		
