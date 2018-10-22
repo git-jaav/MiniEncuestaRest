@@ -13,4 +13,6 @@ public interface MeEncuestaTemaService {
 	public int guardar(MeEncuestaTema objDao);
 	public int actualizar(MeEncuestaTema objDao);
 	public int eliminar(MeEncuestaTema objDao);
+	
+	public boolean verificarStatusDB();	
 }

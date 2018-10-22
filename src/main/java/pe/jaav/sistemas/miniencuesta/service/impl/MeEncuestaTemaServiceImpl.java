@@ -53,4 +53,9 @@ public class MeEncuestaTemaServiceImpl implements MeEncuestaTemaService {
 		return 1;
 	}
 
+	@Override
+	public boolean verificarStatusDB() {		
+		return meEncuestaTemaDao.getHealthyStatus();
+	}
+
 }

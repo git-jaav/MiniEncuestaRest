@@ -1,6 +1,7 @@
 package pe.jaav.sistemas.miniencuesta.model.dao.impl;
 
 import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
@@ -77,6 +78,21 @@ public abstract class AbstractDaoImpl<E, I extends Serializable>  implements Abs
 //	        return criteria.list();
 //	    }
 	    
+	    @Override
+	    public boolean getHealthyStatus(){        
+	    	try{
+		    	SQLQuery query = getCurrentSession().createSQLQuery("SELECT 1;");
+		    	Object result = query.uniqueResult();
+		    	if(result != null){
+		    		return (Integer.parseInt(""+result)>0)?true:false;
+		    	}else{
+		    		return false;
+		    	}
+	    	}catch(Exception e){
+	    		e.printStackTrace();
+	    		return false;
+	    	}	              
+	    }
 	    
 	    public void setPaginable(EntidadSup entidad, Criteria criteria){        
 	        criteria.setFirstResult(entidad.getInicio());

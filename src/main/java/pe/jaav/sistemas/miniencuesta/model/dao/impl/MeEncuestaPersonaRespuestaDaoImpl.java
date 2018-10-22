@@ -49,13 +49,15 @@ public class MeEncuestaPersonaRespuestaDaoImpl extends AbstractDaoImpl<MeEncuest
 					criteria.add(Restrictions.eq("meEncuestaAlternativa.enteCodigo",
 							objDao.getMeEncuestaAlternativa().getEnteCodigo()));
 				}
-			}
+			}		
 			if (UtilesCommons.noEsVacio(objDao.getEnaltId())) {
 				criteria.add(Restrictions.eq("enaltId", objDao.getEnaltId()));
 			}
 			if (UtilesCommons.noEsVacio(objDao.getEnperCodigoUsuario())) {
 				criteria.add(Restrictions.eq("enperCodigoUsuario", objDao.getEnperCodigoUsuario()));
 			}
+			
+			setOrdenableAtrib(criteria, ORDER_DESC, "enperFechaRegistro");
 		}
 		return criteria;
 	}

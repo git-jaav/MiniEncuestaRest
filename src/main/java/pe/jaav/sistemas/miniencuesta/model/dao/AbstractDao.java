@@ -12,6 +12,8 @@ public interface AbstractDao<E, I extends Serializable> {
     void saveOrUpdate(E e) ;
     void save(E e);
     void update(E e);
-    void delete(E e);    
+    void delete(E e);
+    
+    boolean getHealthyStatus();
     List<E> findByCriteria(Criterion criterion);
 }
